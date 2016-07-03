@@ -6,10 +6,12 @@ import java.util.ArrayList;
 /**
  * Created by Larisa_Bigvava on 7/1/2016.
  */
-class NoteBook {
+class NoteBook implements NoteContainer{
 
     private ArrayList<Note> notes = new ArrayList<>();
 
+
+    @Override
     public ArrayList<Note> getNotes(){
         return notes;
     }
@@ -39,6 +41,7 @@ class NoteBook {
         return result;
     }
 
+    @Override
     public Note[] getNotes(String title){
         ArrayList<Note> notes = new ArrayList<>();
         for (Note note : this.notes){
@@ -46,6 +49,11 @@ class NoteBook {
                 notes.add(note);
             }
         }
-        return (Note[]) notes.toArray();
+        return notes.isEmpty() ? null : notes.toArray(new Note[notes.size()]);
+    }
+
+    @Override
+    public void addNote(Note note){
+        notes.add(note);
     }
 }
