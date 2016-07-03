@@ -31,8 +31,8 @@ public class Note {
 
     @Override
     public int hashCode() {
-        int result = title.hashCode();
-        result = 31 * result + text.hashCode();
+        int result = title!=null ? title.hashCode() : 0;
+        result = 31 * result + (text!=null ? text.hashCode() : 0);
         return result;
     }
 
